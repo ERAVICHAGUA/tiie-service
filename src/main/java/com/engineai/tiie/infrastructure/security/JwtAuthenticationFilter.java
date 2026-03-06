@@ -1,4 +1,4 @@
-package com.engineai.fice.infrastructure.security;
+package com.engineai.tiie.infrastructure.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

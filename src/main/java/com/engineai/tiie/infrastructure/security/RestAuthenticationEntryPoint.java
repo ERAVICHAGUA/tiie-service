@@ -1,4 +1,4 @@
-package com.engineai.fice.infrastructure.security;
+package com.engineai.tiie.infrastructure.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;

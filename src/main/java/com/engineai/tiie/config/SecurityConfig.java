@@ -1,14 +1,13 @@
-package com.engineai.fice.config;
+package com.engineai.tiie.config;
 
-import com.engineai.fice.infrastructure.security.JwtAuthenticationFilter;
-import com.engineai.fice.infrastructure.security.RestAuthenticationEntryPoint;
+import com.engineai.tiie.infrastructure.security.JwtAuthenticationFilter;
+import com.engineai.tiie.infrastructure.security.RestAuthenticationEntryPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -50,8 +49,6 @@ public class SecurityConfig {
 
         config.setAllowedHeaders(List.of("*"));
         config.setExposedHeaders(List.of("Authorization"));
-
-        // Para JWT no necesitas cookies
         config.setAllowCredentials(false);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -68,17 +65,12 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(restAuthenticationEntryPoint))
                 .authorizeHttpRequests(auth -> auth
-
-                        // Permitir preflight
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-
-                        // swagger / health
                         .requestMatchers(
                                 "/actuator/**",
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**"
                         ).permitAll()
-
                         .anyRequest().authenticated()
                 );
 

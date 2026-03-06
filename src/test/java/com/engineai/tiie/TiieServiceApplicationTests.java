@@ -1,13 +1,12 @@
-package com.engineai.fice;
+package com.engineai.tiie;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FiceServiceApplicationTests {
+class TiieServiceApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-
+    @Test
+    void contextLoads() {
+    }
 }
