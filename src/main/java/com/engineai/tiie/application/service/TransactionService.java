@@ -41,7 +41,7 @@ public class TransactionService {
                 .confidence(confidence)
                 .classificationMethod("rules")
                 .status("CLASSIFIED")
-                .occurredAt(LocalDateTime.parse(request.occurredAt()))
+                .occurredAt(java.time.OffsetDateTime.parse(request.occurredAt()).toLocalDateTime())
                 .build();
 
         return transactionRepository.save(transaction);
